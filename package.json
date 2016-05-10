@@ -1,0 +1,27 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "todo application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ghadaezzat/todoApp.git"
+  },
+  "keywords": [
+    "todo"
+  ],
+  "author": "ghada ezzat",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ghadaezzat/todoApp/issues"
+  },
+  "homepage": "https://github.com/ghadaezzat/todoApp#readme",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4",
+    "mongoose": "^4.4.16"
+  }
+}
