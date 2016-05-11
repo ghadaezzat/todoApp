@@ -1,5 +1,5 @@
 <!DOCTYPE>
-<html ng-app>
+<html ng-app="myApp">
 <head>
 <link rel="stylesheet" href="bootstrap.min.css"/>
 
@@ -20,12 +20,16 @@
         </tr>
       </thead>
       <tbody>
-          
-        <tr>
-          <td><input class="form-control" ng-model="todoList.name"></td>
-         
-          <td><button class="btn btn-primary" ng-click="addContact()">Add Task</button></td>
-          <td><button class="btn btn-info" ng-click="deselect()">Clear</button></td>
+              <tr>
+          <td><input type="text" class="form-control" ng-model="todo.name"/></td>
+          <td><button class="btn btn-primary" ng-click="addTask()">Add Task</button>
+          <button class="btn btn-info" ng-click="update()">Update</button></td>
+          <td><button class="btn btn-info" ng-click="clear()">Clear</button></td>
+          </tr> 
+        <tr ng-repeat="todo in todoList">
+          <td>{{todo.name}}</td>
+          <td><button class="btn btn-danger" ng-click="remove(todo._id)">Remove</button></td>
+          <td><button class="btn btn-warning" ng-click="edit(todo._id)">Edit</button></td>
         </tr>
         
       </tbody>

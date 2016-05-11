@@ -1,56 +1,55 @@
-//var myApp = angular.module('myApp', []);
-//myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
-function AppCtrl($scope){  
-console.log("Hello World from controller");
-task1 ={name:"washing"};
-task2 = {name: "cooking"};
-task3 ={name: "feeding the turtle"};
-var todoList =[ task1 ,task2 ,task3 ];
-$scope.todoList=todoList;
-}
-//}]);
+var myApp = angular.module('myApp', []);
+myApp.controller('AppCtrl', function($scope,$http) {
+        $http.get("/todoList").success(function(response){
+           console.log("I received the data from the server");
+           $scope.todoList=response;
+        });
+//console.log("Hello World from controller");
 
-/*
+
+
+
+
 var refresh = function() {
-  $http.get('/contactlist').success(function(response) {
+  $http.get('/todoList').success(function(response) {
     console.log("I got the data I requested");
-    $scope.todolist = response;
+    $scope.todoList = response;
     $scope.todo = "";
   });
-};
+}
 
-refresh();
-
-$scope.addContact = function() {
-  console.log($scope.contact);
-  $http.post('/contactlist', $scope.contact).success(function(response) {
+$scope.addTask = function() {
+  console.log($scope.todo);
+  
+$http.post('/todoList', $scope.todo).success(function(response) {
     console.log(response);
-    refresh();
+  refresh();
   });
-};
+}
 
 $scope.remove = function(id) {
   console.log(id);
-  $http.delete('/contactlist/' + id).success(function(response) {
+    $http.delete('/todoList/' + id).success(function(response) {
     refresh();
   });
 };
 
 $scope.edit = function(id) {
   console.log(id);
-  $http.get('/contactlist/' + id).success(function(response) {
-    $scope.contact = response;
+  $http.get('/todoList/' + id).success(function(response) {
+    $scope.todo = response;
   });
 };  
 
 $scope.update = function() {
-  console.log($scope.contact._id);
-  $http.put('/contactlist/' + $scope.contact._id, $scope.contact).success(function(response) {
+  console.log($scope.todo._id);
+  $http.put('/todoList/' + $scope.todo._id, $scope.todo).success(function(response) {
     refresh();
   })
 };
 
-$scope.deselect = function() {
-  $scope.contact = "";
+$scope.clear = function() {
+  $scope.todo = "";
 }
-*/
+
+});
